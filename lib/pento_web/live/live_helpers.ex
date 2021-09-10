@@ -16,6 +16,7 @@ defmodule PentoWeb.LiveHelpers do
         return_to: Routes.product_index_path(@socket, :index) %>
   """
   def live_modal(component, opts) do
+    IO.inspect(opts, label: "#{__MODULE__} opts")
     path = Keyword.fetch!(opts, :return_to)
     modal_opts = [id: :modal, return_to: path, component: component, opts: opts]
     live_component(PentoWeb.ModalComponent, modal_opts)

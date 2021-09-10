@@ -24,6 +24,7 @@ defmodule PentoWeb.ProductLive.FormComponent do
   end
 
   def handle_event("save", %{"product" => product_params}, socket) do
+    IO.inspect(product_params, label: "#{__MODULE__} save event product_params")
     save_product(socket, socket.assigns.action, product_params)
   end
 
@@ -33,7 +34,11 @@ defmodule PentoWeb.ProductLive.FormComponent do
         {:noreply,
          socket
          |> put_flash(:info, "Product updated successfully")
+         # Will force reload of product index as it invokes mount/3
          |> push_redirect(to: socket.assigns.return_to)}
+
+      # Should we had used push_patch, it would not have refresh the product index page
+      # |> push_patch(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
