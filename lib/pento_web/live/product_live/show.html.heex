@@ -6,7 +6,8 @@
     title: @page_title,
     action: @live_action,
     product: @product,
-    return_to: Routes.product_show_path(@socket, :show, @product) %>
+    return_to: Routes.product_show_path(@socket, :show, @product),
+    foo: @foo%>
 <% end %>
 
 <ul>
