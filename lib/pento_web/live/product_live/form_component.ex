@@ -37,7 +37,7 @@ defmodule PentoWeb.ProductLive.FormComponent do
          # Will force reload of product index as it invokes mount/3
          |> push_redirect(to: socket.assigns.return_to)}
 
-      # Should we had used push_patch, it would not have refresh the product index page
+      # If we had used push_patch, it would not have refreshed the product index page
       # |> push_patch(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

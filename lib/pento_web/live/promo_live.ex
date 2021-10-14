@@ -20,7 +20,7 @@ defmodule PentoWeb.PromoLive do
 
   @impl true
   def handle_event("validate", %{"recipient" => recipient_params}, socket) do
-    Logger.debug("Validation")
+    Logger.debug("Validate promo form")
 
     changeset =
       socket.assigns.recipient
@@ -32,13 +32,10 @@ defmodule PentoWeb.PromoLive do
 
   @impl true
   def handle_event("save", %{"recipient" => _recipient_params}, socket) do
-    Logger.debug("HERE")
-    # changeset =
-    #   socket.assigns.recipient
-    #   |> Promo.change_recipient(recipient_params)
-    #   |> Map.put(:action, :validate)
+    Logger.debug("Save promo form")
 
-    # {:noreply, assign(socket, :changeset, changeset)}
+    :timer.sleep(1000)
+
     {:noreply, socket}
   end
 
